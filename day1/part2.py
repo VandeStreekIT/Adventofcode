@@ -26,6 +26,11 @@ with open(input_path) as input:
         first_spelled_digit = ''
         last_spelled_digit = ''
 
+        first_digit = 0
+        last_digit = 0
+        cal_value = 0
+
+
         # find first and last spelled digit
         for k, v in spelled_out.items():
             index =[m.start() for m in re.finditer(k, line)]
