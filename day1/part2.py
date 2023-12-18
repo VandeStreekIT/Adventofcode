@@ -63,7 +63,7 @@ with open(input_path) as input:
             line_last_digit = (
                 line[0:last_index] 
                 + spelled_out[last_spelled_digit] 
-                + line[last_index + len(last_spelled_digit): -1])    
+                + line[last_index + len(last_spelled_digit):])    
 
 
         # get first digit from line
