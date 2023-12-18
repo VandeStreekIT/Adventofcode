@@ -19,3 +19,4 @@ for line in lines:
     sum = sum + power
 
 print(sum)
+file.close()

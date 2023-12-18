@@ -20,3 +20,4 @@ for line in lines:
     sum = sum + int(game)
 
 print(sum)
+file.close()
