@@ -1,4 +1,4 @@
-input_path = 'day6/input/input.txt'
+input_path = 'day6/input/example.txt'
 
 file = open(input_path).read().strip()
 lines = file.split('\n')
@@ -31,7 +31,7 @@ if len(digit) != 0:
 options_to_win = {}
 for race in range(len(time)):
     options_to_win[race] = 0
-    for ms in range(time[race] + 1):
+    for ms in range(0, time[race] + 1, 1):
         if ms * (time[race]-ms) > distance[race]:
             options_to_win[race] += 1
 
