@@ -1,5 +1,16 @@
-def get_hand_value(hand):
+def get_hand_value(hand, joker):
     structure = []
+    most_common_card = ''
+    counter = 0
+    if not (hand == 5 * joker):
+        for value in list(set(hand)):
+            if value == joker:
+                continue
+            if hand.count(value) > counter:
+                counter = hand.count(value)
+                most_common_card = value
+        hand = hand.replace(joker, most_common_card)
+
     for value in list(set(hand)):
         structure.append(hand.count(value))
     return tuple(sorted(structure, reverse=True))
@@ -9,7 +20,7 @@ input_path = 'day7/input/input.txt'
 file = open(input_path).read().strip()
 lines = file.split('\n')
 
-card_order = {'A': 0, 'K': 1, 'Q': 2, 'J': 3, 'T': 4, '9': 5, '8': 6, 
+card_order = {'A': 0, 'K': 1, 'Q': 2, 'J': 13, 'T': 4, '9': 5, '8': 6, 
          '7': 7, '6': 8, '5': 9, '4': 10, '3': 11, '2': 12}
 
 hand_value_order = {
@@ -33,7 +44,10 @@ for line in lines:
     games[h] = b
 
 for hand, bet in games.items():
-    results[get_hand_value(hand)][hand] = bet
+    
+
+
+    results[get_hand_value(hand, 'J')][hand] = bet
 
 score = 0
 rank = 0
