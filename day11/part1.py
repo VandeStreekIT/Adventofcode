@@ -14,9 +14,26 @@ def expend(input):
             qty += 1
     return spaced
 
-input_path = 'day11/input/example.txt'
+def calc_distance(star1, star2):
+    return abs(star1[0] - star2[0]) + abs(star1[1] - star2[1])
+
+input_path = 'day11/input/input.txt'
 
 file = open(input_path).read().strip()
 old_galaxy = file.split('\n')
 
 new_galaxy = expend(transpose(expend(old_galaxy)))
+
+stars = []
+for i, line in enumerate(new_galaxy):
+    for j, c in enumerate(line):
+        if c == '#':
+            stars.append((i, j))
+
+total = 0
+for i in range(len(stars) -1):
+    star1 = stars[i]
+    for star2 in stars[i + 1:]:
+        total += calc_distance(star1, star2)
+
+print(total)
