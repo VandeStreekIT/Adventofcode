@@ -49,4 +49,18 @@ while coor != start or len(path) == 0:
     coor, dir = next_coor(coor, dir)
     path.append(coor)
 
-print(int((len(path)) / 2))
+# print(int((len(path)) / 2))
+inside = False
+count = 0
+for i, row in enumerate(maze):
+    for j, p in enumerate(row):
+        if (i, j) in path:
+            if p in 'L-J':
+                continue
+            inside = not inside
+            continue
+        if inside:
+            count += 1
+    inside = False
+
+print(count)
